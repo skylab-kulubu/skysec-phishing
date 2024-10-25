@@ -4,11 +4,11 @@ from django.http import JsonResponse
 import json
 from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth.decorators import login_required
+from collector.models import Target
 # Create your views here.
 
 @login_required()
 def quiz(r):
-    
     questions = Quiz.objects.filter(is_active=True)
     if r.method == "POST":
         total = 100
@@ -27,10 +27,20 @@ def quiz(r):
                 
         
         if total<50:
-            print("Başarısız")
+            target = Target.objects.filter(user=r.user)
+            target.is_completed=True
+            target.save()
+            message = "Testi Geçtin!"
         else:
-            print("Başarılı")
+            message = "Testi Tekrar Çözün!"
         print(answers)
-        return redirect('index')
+        return redirect('index',{"message":message})
     else:
-        return render(r,'quiz.html',{'questions':questions})
+        try:
+            target = Target.objects.filter(user=r.user)
+            if not Target.objects.filter(user=r.user).first().is_completed:
+                return render(r,'quiz.html',{'questions':questions})
+            else:
+                return redirect('index')
+        except:
+            return redirect('index')
