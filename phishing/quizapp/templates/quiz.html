@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siber Güvenlik Soruları</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h2>Siber Güvenlik Soruları</h2>
+        <form method="POST">
+            {% csrf_token %}
+
+            {% for question in questions %}
+            
+                <div class="question">
+                    <p>{{forloop.counter}}) {{question.question}}</p>
+                    <label><input type="radio" name="q1" value="a"> A) {{question.opt_a}} </label><br>
+                    <label><input type="radio" name="q1" value="b"> B) {{question.opt_b}}</label><br>
+                    <label><input type="radio" name="q1" value="c"> C) {{question.opt_c}}</label><br>
+                    <label><input type="radio" name="q1" value="d"> D) {{question.opt_d}}</label><br>
+                </div>
+            {% endfor %}
+            
+            <input type="submit" value="Cevapları Gönder">
+        </form>
+    </div>
+
+</body>
+</html>
