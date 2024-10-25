@@ -27,15 +27,3 @@ def olta(r):
 def index(request):
     targets = Target.objects.all()
     return render(request, 'index.html', {'targets': targets})
-
-@login_required
-def delete_record(r):
-    if r.user.is_superuser:
-        first_name = str(r.GET['n']).lower()
-        last_name = str(r.GET['l']).lower()
-        target = Target.objects.filter(first_name=first_name,last_name=last_name)
-        target.delete()
-        
-        return redirect('index')
-    else:
-        return render(r,'login')
