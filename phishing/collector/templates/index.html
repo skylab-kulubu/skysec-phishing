@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siber Güvenlik</title>
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>İsim</th>
+                <th>Soyisim</th>
+                <th>Sayaç</th>
+                <th>Eğitim Durumu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Body Start -->
+            {% for target in targets %}
+            
+            <tr>
+                <td>{{target.first_name}}</td>
+                <td>{{target.last_name}}</td>
+                <td>{{target.count}}</td>
+                <td>
+                    {% if target.is_completed %}
+                    Tamamlandı
+
+                    {% else %}
+
+                    Tamamlanmadı
+
+                    {% endif %}
+                </td>
+            </tr>
+            
+            {% endfor %}
+            <!-- Body END -->
+        </tbody>
+    </table>
+
+</body>
+</html>
