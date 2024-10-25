@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
+
 def register(request):
+    if request.user.is_authenticated: return redirect('index')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -17,6 +19,7 @@ def register(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated: return redirect('index')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
