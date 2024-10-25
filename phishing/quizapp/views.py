@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required()
 def quiz(r):
+    
     questions = Quiz.objects.filter(is_active=True)
     if r.method == "POST":
         total = 100

@@ -23,8 +23,8 @@
             {% for target in targets %}
             
             <tr>
-                <td>{{target.first_name}}</td>
-                <td>{{target.last_name}}</td>
+                <td>{{target.user.first_name}}</td>
+                <td>{{target.user.last_name}}</td>
                 <td>{{target.count}}</td>
                 <td>
                     {% if target.is_completed %}
