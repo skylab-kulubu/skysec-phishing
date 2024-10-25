@@ -6,6 +6,8 @@ services:
     volumes:
       - app:/app
     restart: on-failure
+    depends_on:
+      - db
  
   nginx:
     image: nginx
@@ -16,6 +18,20 @@ services:
       phish-network:
     ports:
       - "80:80" 
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_USER: phisher
+      POSTGRES_DB: phisher
+
+    networks:
+      - phish-network
+    # ports:
+    #   - "5432:5432"
 
 
 networks:
