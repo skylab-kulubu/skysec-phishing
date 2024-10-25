@@ -23,4 +23,5 @@ networks:
     
 volumes:
   nginx:
+  nginx-log:
   app:
