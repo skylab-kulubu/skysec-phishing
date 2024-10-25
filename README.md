@@ -30,3 +30,9 @@ docker compose up -d app
 ```bash
 docker compose up -d nginx
 ```
+
+# Kurulum Betiği
+
+```bash
+bash setup.sh
+```

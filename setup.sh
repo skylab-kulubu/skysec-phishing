@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 docker compose up -d db
 sleep 60
 docker compose up -d app
