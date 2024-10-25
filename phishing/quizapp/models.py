@@ -8,7 +8,12 @@ class Quiz(models.Model):
     opt_b = models.CharField(max_length=255)
     opt_c = models.CharField(max_length=255)
     opt_d = models.CharField(max_length=255)
-    true_opt = models.CharField(max_length=1)
+    true_opt = models.CharField(max_length=1,choices=[
+        ('A','A'),
+        ('B','B'),
+        ('C','C'),
+        ('D','D')
+    ])
     is_active = models.BooleanField(default=True)
 
 
