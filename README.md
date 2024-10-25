@@ -14,3 +14,19 @@ sudo docker compose up -d
 ```bash
 ./phishing/manage.py runserver 0.0.0.0:8000
 ```
+
+# Dikkat!
+
+Konteynerlerleri sırayla çalıştırmanız gerekebilir! Sırasıyla:
+
+```bash
+docker compose up -d db
+```
+
+```bash
+docker compose up -d app
+```
+
+```bash
+docker compose up -d nginx
+```
