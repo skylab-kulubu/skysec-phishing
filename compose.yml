@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    networks:
+      phish-network:
+    volumes:
+      - app:/app
+    restart: on-failure
+ 
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - nginx-log:/var/log/nginx
+    networks:
+      phish-network:
+    ports:
+      - "80:80" 
+
+
+networks:
+  phish-network:
+    
+volumes:
+  nginx:
+  app:
