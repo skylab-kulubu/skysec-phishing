@@ -1,4 +1,6 @@
 # SKY SEC Oltalama Sistemi
+# To-Do
+- Veri tabanı bilgilerini .env ile kullanmak
 
 # Docker Yükleme
 ```bash
